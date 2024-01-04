@@ -12,6 +12,27 @@ use Exception;
 
 class GoogleAuthController extends Controller
 {
+
+    public function home(){
+        if (auth()->check()) {
+            //L'utilisateur est déjà connecté -> dashboard OK
+            return view('dashboard');
+        }else{  //l'utilisateur n'est pas connecté -> redirect
+            return view('welcome');
+        } 
+    }
+
+    public function dashboard(){
+        if (auth()->check()) {
+            //L'utilisateur est déjà connecté -> dashboard OK
+            return view('dashboard');
+        }else{  //l'utilisateur n'est pas connecté -> redirect
+            return redirect('/');
+        }
+        
+    }
+
+
     public function redirectToGoogle()
     {
         return Socialite::driver('google')->redirect();
@@ -23,7 +44,7 @@ class GoogleAuthController extends Controller
         //try{
             $user = Socialite::driver('google')->stateless()->user();
         
-            var_dump($user);
+            //var_dump($user);
 
             if((strpos($user->getEmail(), '@he2b.be') !== false) && (strpos($user->getEmail(), '@etu.he2b.be'))){
                 return redirect()->route('login')->with('error', 'Adresse e-mail non autorisée');
@@ -32,6 +53,8 @@ class GoogleAuthController extends Controller
             $authUser = $this->findOrCreateUser($user);
 
             Auth::login($authUser, true);
+
+            
 
             return redirect('/dashboard');
         //} catch (\Throwable $th){

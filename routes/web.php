@@ -14,9 +14,9 @@ use App\Http\Controllers\GoogleAuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [GoogleAuthController::class, 'home']);
+
+Route::get('/dashboard', [GoogleAuthController::class, 'dashboard']);
 
 Route::get('/login/google', [GoogleAuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/authorized/google/callback', [GoogleAuthController::class, 'handleGoogleCallback']);
