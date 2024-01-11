@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Departement extends Model
+class Local extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nom',
-        'adresse',
-        'tel'
-        
+        'lib',
+        'etage',
+        'nb_place',
+        'etat'
     ];
 }
