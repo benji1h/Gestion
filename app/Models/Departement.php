@@ -12,7 +12,16 @@ class Departement extends Model
     protected $fillable = [
         'nom',
         'adresse',
-        'tel'
-        
+        'tel'        
     ];
+
+    public function campus(): HasMany
+    {
+        return $this->hasMany(campus::class);
+    }
+
+    public function engagements(): BelongsToMany
+    {
+        return $this->belongsToMany(Engagement::class, 'departements_engagements', 'departement_id', 'engagement_id');
+    }
 }

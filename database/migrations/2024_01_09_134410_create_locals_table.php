@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('nb_place');
             $table->string('etat');
             $table->timestamps();
+            $table->integer('campus_id')->index();
+            $table->foreign('campus_id')->references('id')->on('campuses')->cascadeOnDelete();
         });
     }
 

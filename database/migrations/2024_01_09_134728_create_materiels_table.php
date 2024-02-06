@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('prix');
             $table->string('etat');
             $table->timestamps();
+            $table->integer('local_id')->index();
+            $table->foreign('local_id')->references('id')->on('locals')->cascadeOnDelete();
         });
     }
 

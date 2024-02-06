@@ -14,4 +14,9 @@ class Section extends Model
         'lib'
         
     ];
+
+    public function orientations(): HasMany
+    {
+        return $this->hasMany(Orientation::class);
+    }
 }

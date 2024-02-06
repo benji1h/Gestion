@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orientations', function (Blueprint $table) {
+        Schema::create('groupes_inscriptions', function (Blueprint $table) {
             $table->id();
-            $table->string('acro');
-            $table->string('lib');
+            $table->integer('groupe_id');
+            $table->integer('inscription_id');
+            $table->foreign('groupe_id')->references('id')->on('groupes')->OnDelete('cascade');
+            $table->foreign('inscription_id')->references('id')->on('inscriptions')->OnDelete('cascade');
             $table->timestamps();
-            $table->integer('section_id')->index();
-            $table->foreign('section_id')->references('id')->on('sections')->cascadeOnDelete();
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orientations');
+        Schema::dropIfExists('groupes_inscriptions');
     }
 };

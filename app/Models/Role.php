@@ -13,4 +13,9 @@ class Role extends Model
         'acro',
         'lib'
     ];
+
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'roles_users', 'role_id', 'user_id');
+    }
 }

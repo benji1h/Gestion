@@ -15,4 +15,14 @@ class Local extends Model
         'nb_place',
         'etat'
     ];
+
+    public function materiels(): HasMany
+    {
+        return $this->hasMany(Materiel::class);
+    }
+
+    public function campus(): BelongsTo
+    {
+        return $this->belongsTo(Campus::class);
+    }
 }

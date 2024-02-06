@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('q');
             $table->string('ects');
             $table->timestamps();
+            $table->integer('ue_id')->index();
+            $table->foreign('ue_id')->references('id')->on('u_e_s')->cascadeOnDelete();
         });
     }
 

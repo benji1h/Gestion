@@ -14,4 +14,9 @@ class Evenement extends Model
         'debut',
         'fin'
     ];
+
+    public function groupes(): BelongsToMany
+    {
+        return $this->belongsToMany(Groupe::class, 'evenements_groupes', 'evenement_id', 'groupe_id');
+    }
 }

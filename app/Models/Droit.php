@@ -13,4 +13,9 @@ class Droit extends Model
         'type',
         'lib'
     ];
+
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'droits_users', 'droit_id', 'user_id');
+    }
 }

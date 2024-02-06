@@ -13,4 +13,19 @@ class Orientation extends Model
         'acro',
         'lib'
     ];
+
+    public function section(): BelongsTo
+    {
+        return $this->belongsTo(Section::class);
+    }
+
+    public function ues(): HasMany
+    {
+        return $this->hasMany(UE::class);
+    }
+
+    public function inscriptions(): HasMany
+    {
+        return $this->hasMany(Inscription::class);
+    }
 }

@@ -13,4 +13,14 @@ class UE extends Model
         'acro',
         'lib'
     ];
+
+    public function aas(): HasMany
+    {
+        return $this->hasMany(AA::class);
+    }
+
+    public function orientation(): BelongsTo
+    {
+        return $this->belongsTo(orientation::class);
+    }
 }

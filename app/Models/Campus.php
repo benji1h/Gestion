@@ -15,4 +15,19 @@ class Campus extends Model
         'tel'
         
     ];
+
+    public function departement(): BelongsTo
+    {
+        return $this->belongsTo(Campus::class);
+    }
+
+    public function locaux(): HasMany
+    {
+        return $this->hasMany(Local::class);
+    }
+
+    public function engagements(): BelongsToMany
+    {
+        return $this->belongsToMany(Engagement::class, 'campus_engagements', 'campus_id', 'engagement_id');
+    }
 }

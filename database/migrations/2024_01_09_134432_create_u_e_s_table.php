@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('acro');
             $table->string('lib');
             $table->timestamps();
+            $table->integer('orientation_id')->index();
+            $table->foreign('orientation_id')->references('id')->on('orientations')->cascadeOnDelete();
         });
     }
 

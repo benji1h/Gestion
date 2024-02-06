@@ -16,4 +16,9 @@ class Materiel extends Model
         'prix',
         'etat'
     ];
+
+    public function local(): BelongsTo
+    {
+        return $this->belongsTo(Local::class);
+    }
 }
