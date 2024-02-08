@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\DataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,4 @@ Route::get('/login/google', [GoogleAuthController::class, 'redirectToGoogle'])->
 Route::get('/authorized/google/callback', [GoogleAuthController::class, 'handleGoogleCallback']);
 
 //Pour test
-Route::get('/data', function(){
-    return view('data');
-});
+Route::get('/data', [DataController::class, 'chargeData'])->name('charge_data');
