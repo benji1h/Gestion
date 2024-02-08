@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('acro');
             $table->string('lib');
             $table->timestamps();
-            $table->integer('section_id')->index();
+            $table->integer('section_id')->index()->nullable();
             $table->foreign('section_id')->references('id')->on('sections')->cascadeOnDelete();
         });
     }

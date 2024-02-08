@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('adresse');
             $table->string('tel');
             $table->timestamps();
-            $table->integer('departement_id')->index();
+            $table->integer('departement_id')->index()->nullable();
             $table->foreign('departement_id')->references('id')->on('departements')->cascadeOnDelete();
         });
     }

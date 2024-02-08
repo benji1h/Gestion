@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Droit;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,8 @@ class DroitFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'type' => $this->faker->unique()->word,
+            'lib' => $this->faker->sentence(2),
         ];
     }
 }

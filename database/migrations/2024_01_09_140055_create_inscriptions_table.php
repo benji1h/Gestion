@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('date_fin');
             $table->string('etat');
             $table->timestamps();
-            $table->integer('user_id')->index();
-            $table->integer('orientation_id')->index();
+            $table->integer('user_id')->index()->nullable();
+            $table->integer('orientation_id')->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->foreign('orientation_id')->references('id')->on('orientations')->cascadeOnDelete();
         });

@@ -5,6 +5,12 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
+use App\Models\Inscription;
+use App\Models\Engagement;
+use App\Models\Role;
+use App\Models\Droit;
+use App\Models\User;
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
@@ -35,4 +41,14 @@ class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (User $user) {
+            $nbDroits = rand(1, 2);
+            $droits = Droit::inRandomOrder()->limit($nbDroits)->get();
+            $user->droits()->attach($droits);
+        });
+    }
+
 }

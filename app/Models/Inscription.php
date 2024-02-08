@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 class Inscription extends Model
 {
     use HasFactory;
@@ -23,7 +26,7 @@ class Inscription extends Model
 
     public function groupes(): BelongsToMany
     {
-        return $this->belongsToMany(Groupe::class, 'groupes_inscriptions', 'groupe_id', 'inscription_id');
+        return $this->belongsToMany(Groupe::class, 'groupes_inscriptions', 'inscription_id', 'groupe_id');
     }
 
     public function orientation(): BelongsTo
@@ -33,7 +36,7 @@ class Inscription extends Model
 
     public function aas(): BelongsToMany
     {
-        return $this->belongsToMany(AA::class, 'aa_inscription', 'aa_id', 'inscription_id');
+        return $this->belongsToMany(AA::class, 'aa_inscription', 'inscription_id', 'aa_id');
     }
 
 }

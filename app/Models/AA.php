@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 class AA extends Model
 {
     use HasFactory;
@@ -24,7 +27,7 @@ class AA extends Model
 
     public function inscriptions(): BelongsToMany
     {
-        return $this->belongsToMany(Inscription::class, 'aa_inscription', 'aa_id', 'inscription_id');
+        return $this->belongsToMany(Inscription::class, 'aa_inscriptions', 'aa_id', 'inscription_id');
     }
 
     public function groupes(): BelongsToMany

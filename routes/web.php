@@ -20,3 +20,8 @@ Route::get('/', function () {
 
 Route::get('/login/google', [GoogleAuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/authorized/google/callback', [GoogleAuthController::class, 'handleGoogleCallback']);
+
+//Pour test
+Route::get('/data', function(){
+    return view('data');
+});

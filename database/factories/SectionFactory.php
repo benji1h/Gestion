@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Section;
+use App\Models\Orientation;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +20,9 @@ class SectionFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'acro' => $this->faker->unique()->word,
+            'lib' => $this->faker->sentence(2),
+            // 'orientations' => Orientation::factory() // Optional: Add logic to associate orientations
         ];
     }
 }

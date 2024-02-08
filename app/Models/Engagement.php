@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 class Engagement extends Model
 {
     use HasFactory;
@@ -22,11 +25,11 @@ class Engagement extends Model
 
     public function campus(): BelongsToMany
     {
-        return $this->belongsToMany(Campus::class, 'campus_engagements', 'campus_id', 'engagement_id');
+        return $this->belongsToMany(Campus::class, 'campus_engagements', 'engagement_id', 'campus_id');
     }
 
     public function departements(): BelongsToMany
     {
-        return $this->belongsToMany(Departement::class, 'departements_engagements', 'departement_id', 'engagement_id');
+        return $this->belongsToMany(Departement::class, 'departements_engagements', 'engagement_id', 'departement_id');
     }
 }

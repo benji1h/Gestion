@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+use App\Models\AA;
+
 class AASeeder extends Seeder
 {
     /**
@@ -12,6 +14,8 @@ class AASeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        AA::factory()
+            ->count(10) // Adjust the count as needed
+            ->create();
     }
 }
