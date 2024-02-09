@@ -16,16 +16,17 @@ class GoogleAuthController extends Controller
     public function home(){
         if (auth()->check()) {
             //L'utilisateur est déjà connecté -> dashboard OK
-            return view('dashboard');
+            return view('dashboard', ['username' => Auth::user()->name]);
         }else{  //l'utilisateur n'est pas connecté -> redirect
             return view('welcome');
         } 
     }
 
     public function dashboard(){
+        //var_dump(Auth::user()->name);
         if (auth()->check()) {
             //L'utilisateur est déjà connecté -> dashboard OK
-            return view('dashboard');
+                return view('dashboard', ['username' => Auth::user()->name]);
         }else{  //l'utilisateur n'est pas connecté -> redirect
             return redirect('/');
         }
